@@ -5,7 +5,7 @@ on:
     branches: [ dev, master ]
 
 jobs:
-  build_and_deploy:
+  cicd:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

@@ -14,7 +14,7 @@ import java.util.*;
 public class Player extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
 
     @Column(unique = true, nullable = false)
     @Size(min = 3, max = 16)

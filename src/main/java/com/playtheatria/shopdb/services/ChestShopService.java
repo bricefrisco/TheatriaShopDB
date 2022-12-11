@@ -121,7 +121,7 @@ public class ChestShopService {
         }
 
         if (!event.getWorld().equals("The_Ark")) {
-            LOGGER.info("Skipping event " + event.toString() + " - server cannot be determined.");
+            LOGGER.info("Skipping event " + event + " - server cannot be determined.");
             return false;
         }
 
