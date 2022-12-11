@@ -17,7 +17,7 @@ import java.util.Locale;
 public class Region extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
 
     @Column(nullable = false)
     public String name;
