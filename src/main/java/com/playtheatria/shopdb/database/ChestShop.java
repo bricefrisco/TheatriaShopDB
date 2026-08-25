@@ -89,6 +89,13 @@ public class ChestShop extends PanacheEntityBase {
                 tradeType == TradeType.BUY).list();
     }
 
+    public static List<ChestShop> findVisible(Server server) {
+        return ChestShop.find(
+                "isHidden = false AND (?1 = '' OR server = ?1)",
+                Server.toString(server)
+        ).list();
+    }
+
     public static PanacheQuery<ChestShop> findInRegion(Region r, TradeType tradeType) {
         return find("town = ?1 AND isHidden = false AND " +
                         "(?2 IS FALSE or is_buy_sign = true) AND " +

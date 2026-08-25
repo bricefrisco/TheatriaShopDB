@@ -7,6 +7,7 @@ import com.playtheatria.shopdb.models.exceptions.SDBIllegalArgumentException;
 import com.playtheatria.shopdb.services.APIKeyValidator;
 import com.playtheatria.shopdb.services.ChestShopService;
 import com.playtheatria.shopdb.services.Pagination;
+import com.playtheatria.shopdb.services.PriceSnapshotCalculator;
 import com.playtheatria.shopdb.models.chestshops.*;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
@@ -77,6 +78,13 @@ public class ChestShopController {
         LOGGER.info("GET /chest-shops/material-names");
 
         return ChestShop.findDistinctMaterialNames(tradeType, server);
+    }
+
+    @GET
+    @Path("price-snapshot")
+    public List<PriceSnapshotDto> getPriceSnapshot(@QueryParam("server") Server server) {
+        LOGGER.info("GET /chest-shops/price-snapshot");
+        return PriceSnapshotCalculator.calculate(ChestShop.findVisible(server));
     }
 
     @POST
